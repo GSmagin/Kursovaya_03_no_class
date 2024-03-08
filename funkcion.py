@@ -9,7 +9,7 @@ def open_json(dir_file=dir_json):
         return parsed_data
 
 
-def operation_limit(limited, operation):
+def operation(operation):
     json_data = []
 
     for parsed in operation:
@@ -22,12 +22,13 @@ def operation_limit(limited, operation):
                               "from": parsed.get("from"),
                               "to": parsed.get("to")})
 
-    return json_data[:limited]
+    return json_data
 
 
-def operation_sort(operation):
+def operation_sort(operation, limit=5):
+
     operation.sort(key=lambda x: x.get("date"), reverse=True)
-    return operation
+    return operation[:limit]
 
 
 def hiding_account(operation):
